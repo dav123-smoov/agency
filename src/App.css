@@ -1,0 +1,8 @@
+/* App level styles can go here if needed, but we rely on LandingPage.css */
+
+#root {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
