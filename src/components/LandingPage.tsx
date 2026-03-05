@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import Sponsors from './Sponsors';
 import './LandingPage.css';
 
 export default function LandingPage() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
   return (
-    <div className="landing-page">
+    <>
       {/* ── Vertical Left Nav ── */}
       <div className="side-nav">
         <button className="side-nav-arrow">&#8593;</button>
@@ -17,97 +16,6 @@ export default function LandingPage() {
         <button className="side-nav-arrow">&#8595;</button>
       </div>
 
-      {/* ── Topbar ── */}
-      <div className="topbar">
-        <div className="topbar-inner">
-          <div className="topbar-left">
-            <span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" /></svg>
-              128 Munich 1258, Germany.
-            </span>
-            <span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" /></svg>
-              help.me@example.com
-            </span>
-          </div>
-          <div className="topbar-right">
-            <span>Follow Us:</span>
-            <div className="topbar-socials">
-              <a href="#">f</a>
-              <a href="#">Bē</a>
-              <a href="#">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                </svg>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── Navbar ── */}
-      <div className="navbar-wrapper">
-        <nav className="navbar">
-          <div className="navbar-inner">
-            <a href="#" className="nav-logo">
-              <div className="nav-logo-icon">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 8V5h14v3" />
-                  <path d="M12 5v14" />
-                  <circle cx="9" cy="18" r="1.5" />
-                  <circle cx="16" cy="11" r="1.5" />
-                  <circle cx="5" cy="11" r="1.5" />
-                  <path d="M7 15l-1-2.5" />
-                  <path d="M12 11l2.5-1.5" />
-                </svg>
-              </div>
-              Tekly
-            </a>
-            <div className={`nav-menu-container ${isMobileMenuOpen ? 'open' : ''}`}>
-              <ul className="nav-links">
-                <li><a href="#" className="active">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-              <div className="nav-actions">
-                <div className="nav-phone-wrap">
-                  <div className="nav-phone-icon">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" /></svg>
-                  </div>
-                  <div className="nav-phone-text">
-                    <span className="nav-phone-label">Hotline 24/7</span>
-                    <span className="nav-phone-number">+1 (555) 123-4567</span>
-                  </div>
-                </div>
-                <a href="#" className="btn-primary btn-talk">Let's Talk <span className="plus-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg></span></a>
-              </div>
-            </div>
-
-            <button
-              className="mobile-menu-btn"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle navigation"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                {isMobileMenuOpen ? (
-                  <>
-                    <path d="M18 6L6 18" />
-                    <path d="M6 6l12 12" />
-                  </>
-                ) : (
-                  <>
-                    <path d="M3 12h18" />
-                    <path d="M3 6h18" />
-                    <path d="M3 18h18" />
-                  </>
-                )}
-              </svg>
-            </button>
-          </div>
-        </nav>
-      </div>
 
       {/* ── Hero ── */}
       <section className="hero-section">
@@ -545,7 +453,7 @@ export default function LandingPage() {
                     <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> By tekz</span>
                   </div>
                   <h3 className="blog-post-title">{post.title}</h3>
-                  <a href="#" className="blog-read-link">Read Details &rarr;</a>
+                  <Link to="/blog" className="blog-read-link">Read Details &rarr;</Link>
                 </div>
               </div>
             ))}
@@ -554,124 +462,7 @@ export default function LandingPage() {
       </section>
 
       {/* ── Sponsors ── */}
-      <section className="sponsors-section">
-        <div className="section-inner sponsors-inner">
-          {[
-            { name: 'Fired', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg> },
-            { name: 'CLEANUP', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" strokeWidth="2"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"></path></svg> },
-            { name: 'Tobias', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg> },
-            { name: 'vital', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v8M8 12h8"></path></svg> },
-            { name: 'Refert', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8"></path><polyline points="16 6 12 2 8 6"></polyline><line x1="12" y1="2" x2="12" y2="15"></line></svg> },
-            { name: 'Shells', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2"><path d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg> },
-            { name: 'Plation', icon: <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2563eb" strokeWidth="2"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg> },
-          ].map((sponsor, i) => (
-            <div className="sponsor-logo" key={i}>
-              {sponsor.icon}
-              {sponsor.name}
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* ── Footer (including Newsletter) ── */}
-      <footer className="footer-section">
-        {/* Background Mesh Elements */}
-        <div className="footer-bg-shape footer-bg-plus">+++</div>
-        <div className="footer-bg-shape footer-bg-circle"></div>
-        <div className="footer-bg-shape footer-bg-zigzag">
-          <svg width="60" height="30" viewBox="0 0 60 30" fill="none" stroke="#1e3a8a" strokeWidth="2">
-            <path d="M0 15l10-10 10 10 10-10 10 10 10-10 10 10M0 25l10-10 10 10 10-10 10 10 10-10 10 10" />
-          </svg>
-        </div>
-        <div className="footer-bg-shape footer-bg-diamond"></div>
-
-        {/* ── Newsletter ── */}
-        <div className="section-inner newsletter-inner">
-          <div className="newsletter-content">
-            <div className="newsletter-icon-wrap">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path></svg>
-            </div>
-            <div>
-              <h3 className="newsletter-heading">Sign Up To Our Newsletters.</h3>
-              <p className="newsletter-subtext">Subscribe to our Newsletter &amp; Event Right Now to be Updated</p>
-            </div>
-          </div>
-          <form className="newsletter-form">
-            <input type="email" placeholder="Enter Your Email" className="newsletter-input" />
-            <button type="button" className="newsletter-btn">Subscribe Now</button>
-          </form>
-        </div>
-
-        <div className="footer-divider"></div>
-
-        <div className="section-inner footer-inner">
-          <div className="footer-brand-col">
-            <div className="footer-logo">
-              <span className="footer-logo-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16v16H4z M12 4v16M4 12h16" strokeDasharray="2 2" color="#0ea5e9"></path></svg>
-              </span>
-              Tekly
-            </div>
-            <p className="footer-brand-desc">
-              Our dedicated support team is available 24/7 to ensure smooth IT operations, quick issue resolution
-            </p>
-            <div className="footer-socials">
-              <a href="#" className="footer-social-btn">f</a>
-              <a href="#" className="footer-social-btn"></a>
-              <a href="#" className="footer-social-btn">Bē</a>
-              <a href="#" className="footer-social-btn"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.186 0 12 0 12s0 3.814.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.814 24 12 24 12s0-3.814-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" /></svg></a>
-            </div>
-          </div>
-          <div className="footer-col">
-            <h4 className="footer-col-heading">Our Services</h4>
-            <ul className="footer-link-list">
-              {['Database Solution', 'Data Protection', 'App Development', 'Machine Learning', 'Helpdesk Services'].map((item, i) => (
-                <li key={i}><a href="#"><span className="footer-link-arrow">&gt;</span> {item}</a></li>
-              ))}
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4 className="footer-col-heading">Address Company</h4>
-            <ul className="footer-contact-list">
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"></path><circle cx="12" cy="10" r="3"></circle></svg> 12 Tech Avenue, SuiteInnovation City, United States</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"></path></svg> Call Us : +12456978963</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1-.9-2-2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> Mail: tekz@gmail.com</li>
-              <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> Office : 8:00 AM - 7:00 PM</li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4 className="footer-col-heading">Latest Posts</h4>
-            <div className="footer-posts-list">
-              {[
-                { img: 'https://api.builder.io/api/v1/image/assets/TEMP/58e58e2775e62d961e9c5417217294a36d247268?width=80', title: 'How Businesses Can...', date: 'May 17, 2025' },
-                { img: 'https://api.builder.io/api/v1/image/assets/TEMP/6e76bea5071b91488244378e1e6394801b520807?width=80', title: 'IT Industry Key...', date: 'May 17, 2025' },
-              ].map((post, i) => (
-                <div className="footer-post-item" key={i}>
-                  <img src={post.img} alt={post.title} className="footer-post-img" />
-                  <div>
-                    <p className="footer-post-date"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> {post.date}</p>
-                    <a href="#" className="footer-post-latest-title">{post.title}</a>
-                    <a href="#" className="footer-post-readmore">Read More</a>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className="footer-bottom">
-          <div className="section-inner footer-bottom-inner">
-            <p className="footer-copyright">Copyright @ 2025 Tekly. All Rights Received.</p>
-            <div className="footer-bottom-links">
-              <a href="#">Privacy policy</a>
-              <a href="#">Terms of use</a>
-              <a href="#">Site map</a>
-            </div>
-          </div>
-          <button className="footer-scroll-top" onClick={() => window.scrollTo(0, 0)}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="2"><path d="M12 19V5M5 12l7-7 7 7" /></svg>
-          </button>
-        </div>
-      </footer>
-    </div>
+      <Sponsors />
+    </>
   );
 }
