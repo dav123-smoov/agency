@@ -1094,14 +1094,14 @@
 .cta-content::after {
     content: '';
     position: absolute;
-    bottom: 24px;
-    /* Align near the bottom of the button */
-    left: 170px;
-    /* Start right after the button */
+    top: 50%;
+    left: 100%;
+    /* Start right after the button wrapper */
     width: 350px;
-    /* Shoot across the gap */
     height: 1px;
     border-bottom: 2px dashed #4b9ed3;
+    margin-left: 15px;
+    /* Gap from button */
     z-index: 1;
 }
 
@@ -1109,10 +1109,8 @@
 .cta-content::before {
     content: '';
     position: absolute;
-    bottom: 15px;
-    /* Adjust to sit exactly on the line */
-    left: 300px;
-    /* Position along the line */
+    top: calc(50% - 10px);
+    left: calc(100% + 150px);
     width: 20px;
     height: 20px;
     background: transparent;
@@ -1141,30 +1139,35 @@
     margin-bottom: 16px;
 }
 
+.cta-heading {
+    color: #111827;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 30px;
+    letter-spacing: -1px;
+}
+
+.cta-action-row {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
 .cta-inner .btn-primary {
     background: #4b9ed3;
     color: white;
     border: none;
     border-radius: 30px;
     padding: 12px 28px;
-    margin-top: 16px;
-    /* Extra space between text and button */
     display: inline-block;
     transition: var(--transition);
+    z-index: 2;
 }
 
 .cta-inner .btn-primary:hover {
     background: #3b8dc3;
     transform: translateY(-2px);
-}
-
-.cta-heading {
-    color: #111827;
-    font-size: 1.8rem;
-    /* Smaller text */
-    font-weight: 800;
-    line-height: 1.25;
-    margin-bottom: 24px;
 }
 
 .cta-images {
@@ -1292,8 +1295,9 @@
 .projects-list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 40px;
     align-items: center;
+    width: 100%;
 }
 
 .project-card {
@@ -1307,15 +1311,15 @@
     border-radius: 20px;
     overflow: hidden;
     transition: var(--transition);
-    max-width: 1050px;
+    max-width: 850px;
     width: 100%;
     align-items: center;
-    padding: 20px;
-    gap: 24px;
+    padding: 0;
+    gap: 0;
 }
 
 .project-card-body {
-    padding: 20px;
+    padding: 15px 25px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1323,23 +1327,23 @@
 
 .project-title {
     color: #ffffff !important;
-    font-size: 1.6rem;
+    font-size: 1.25rem;
     font-weight: 700;
-    margin-bottom: 16px;
+    margin-bottom: 4px;
 }
 
 .project-desc {
     color: #94a3b8;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 20px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 8px;
 }
 
 .project-stats {
     display: flex;
     flex-direction: row;
-    gap: 24px;
-    margin-bottom: 20px;
+    gap: 20px;
+    margin-bottom: 12px;
 }
 
 .project-stat {
@@ -1375,8 +1379,9 @@
 
 .project-img-wrap {
     height: 100%;
-    min-height: 220px;
-    border-radius: 16px;
+    min-height: 180px;
+    width: 100%;
+    border-radius: 0;
     overflow: hidden;
 }
 

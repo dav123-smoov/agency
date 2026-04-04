@@ -1,0 +1,166 @@
+/* ── HERO SECTION ── */
+.project-hero {
+  position: relative;
+  height: 480px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+}
+
+.project-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(14, 21, 58, 0.7);
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.project-client-label {
+    display: inline-block;
+    background: #3eb5f0;
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.project-hero-content h1 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  margin: 0 0 30px 0;
+  line-height: 1.1;
+  color: #ffffff !important;
+}
+
+.project-quick-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #3eb5f0;
+}
+
+.stat-key {
+    font-size: 0.65rem;
+    font-weight: 700;
+    opacity: 0.8;
+    letter-spacing: 1px;
+    margin-top: 5px;
+}
+
+/* ── CASE STUDY CONTENT ── */
+.case-study-section {
+    padding: 100px 0;
+    background: #ffffff;
+}
+
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 60px;
+}
+
+@media (min-width: 768px) {
+    .case-study-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .full-width {
+        grid-column: span 2;
+    }
+}
+
+.case-study-content-block {
+    padding: 0 10px;
+}
+
+.content-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    color: #ef4444; /* Alert red */
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+}
+
+.content-label.blue-label {
+    color: #3b82f6;
+}
+
+.content-label.green-label {
+    color: #10b981;
+}
+
+.content-heading {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #111827;
+}
+
+.content-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4b5563;
+}
+
+/* ── CTA BOX ── */
+.project-cta-section {
+    padding-bottom: 100px;
+}
+
+.cta-box {
+    background: #111827;
+    color: white;
+    padding: 80px 40px;
+    border-radius: 24px;
+    text-align: center;
+}
+
+.cta-box h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    color: #ffffff !important;
+}
+
+.cta-box p {
+    font-size: 1.1rem;
+    margin-bottom: 35px;
+    opacity: 0.8;
+    color: #ffffff !important;
+}
+
+/* ── UTILS ── */
+.project-not-found {
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}

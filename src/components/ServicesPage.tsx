@@ -1,45 +1,60 @@
+import { Link } from 'react-router-dom';
 import Sponsors from './Sponsors';
 import './ServicesPage.css';
+
+// Import the new high-quality assets
+import smeDesignImg from '../assets/sme_design.png';
+import webEngImg from '../assets/web_engineering.png';
+import cloudAiImg from '../assets/cloud_ai.png';
+import aiAutoImg from '../assets/ai_automation.png';
+import marketingImg from '../assets/marketing.png';
+import strategyImg from '../assets/strategy.png';
 
 export default function ServicesPage() {
     const serviceCards = [
         {
-            title: 'UI/UX and Product Design',
-            desc: 'The Advanced Threat Protection (ATP) Suite Development project focuses on creating a robust and comprehensive...',
-            img: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=600&q=80', // design/creative team
+            id: 'sme-design',
+            title: 'SME Digital Product Design',
+            desc: 'We create intuitive, conversion-focused user experiences that help SMEs engage customers and build a strong brand presence.',
+            img: smeDesignImg,
         },
         {
-            title: 'Web Application Development',
-            desc: 'Our engineering team leverages modern web technologies to build scalable, high-performance web applications tailored to your needs.',
-            img: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80', // coding/laptop
+            id: 'web-engineering',
+            title: 'Enterprise-Grade Web Engineering',
+            desc: 'Our engineering team builds secure, high-performance web applications using modern frameworks, tailored for speed and high-traffic scalability.',
+            img: webEngImg,
         },
         {
-            title: 'Cloud Infrastructure & DevOps',
-            desc: 'We architect and migrate systems to secure cloud environments, optimizing your deployment pipelines for maximum efficiency.',
-            img: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80', // tech/cloud abstract
+            id: 'cloud-ai',
+            title: 'AI-Powered Cloud Solutions',
+            desc: 'We architect and optimize cloud systems specifically for AI workloads, ensuring your tech stack is reliable, secure, and ready for future global growth.',
+            img: cloudAiImg,
         },
         {
-            title: 'Data Analytics & Insights',
-            desc: 'Unlock the value of your data with our advanced analytics tools, giving you actionable insights to drive your business forward.',
-            img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80', // data/charts
+            id: 'ai-automation',
+            title: 'Custom AI Agents & Automation',
+            desc: 'Deploy advanced AI bots and automated workflows that handle repetitive tasks, enhance efficiency, and reduce operational costs for your SME.',
+            img: aiAutoImg,
         },
         {
-            title: 'Cybersecurity Solutions',
-            desc: 'Protect your enterprise with our comprehensive security audits, threat detection, and continuous monitoring services.',
-            img: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=600&q=80', // cyber tech
+            id: 'marketing',
+            title: 'Growth-Driven Digital Marketing',
+            desc: 'A comprehensive mix of SEO, paid ads, and brand strategy designed to maximize visibility and drive measurable ROI for small to medium enterprises.',
+            img: marketingImg,
         },
         {
-            title: 'IT Consulting & Strategy',
-            desc: 'Align your technology strategy with your business goals. Our seasoned consultants guide you through digital transformation.',
-            img: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&q=80', // consulting/meeting
+            id: 'strategy',
+            title: 'Tech Transformation Strategy',
+            desc: 'Our experts guide SMEs through digital modernization, helping you integrate AI tools and web strategies into your current business model effectively.',
+            img: strategyImg,
         }
     ];
 
     const steps = [
         {
             num: 1,
-            title: 'Planning & Strategy',
-            desc: 'We begin by understanding your business needs, challenges, and objectives. Our expert consultants work closely.',
+            title: 'Diagnosis & Strategy',
+            desc: 'We analyze your SME operations to build a tailored tech and marketing roadmap that delivers measurable results.',
             icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
@@ -52,8 +67,8 @@ export default function ServicesPage() {
         },
         {
             num: 2,
-            title: 'Development & Execution',
-            desc: 'We begin by understanding your business needs, challenges, and objectives. Our expert consultants work closely.',
+            title: 'Agile Implementation',
+            desc: 'Our team builds your custom web and AI solutions with a rapid, agile approach, ensuring the fastest time-to-market.',
             icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="16 18 22 12 16 6"></polyline>
@@ -63,8 +78,8 @@ export default function ServicesPage() {
         },
         {
             num: 3,
-            title: 'Support & Optimization',
-            desc: 'We begin by understanding your business needs, challenges, and objectives. Our expert consultants work closely.',
+            title: 'Growth & Optimization',
+            desc: 'We provide maintenance and marketing support to keep your digital assets performing and growing at their peak.',
             icon: (
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <circle cx="12" cy="12" r="3"></circle>
@@ -80,8 +95,8 @@ export default function ServicesPage() {
             <section className="services-hero">
                 <div className="services-hero-overlay"></div>
                 <div className="services-hero-content">
-                    <h1>Our Service</h1>
-                    <p>Home | Our Service</p>
+                    <h1>Elite SME Digital Services</h1>
+                    <p>Home | Our Services</p>
                 </div>
             </section>
 
@@ -102,7 +117,7 @@ export default function ServicesPage() {
                                 <div className="svc-card-body">
                                     <h3 className="svc-title">{card.title}</h3>
                                     <p className="svc-desc">{card.desc}</p>
-                                    <a href="#" className="svc-read-btn">Read More</a>
+                                    <Link to={`/service/${card.id}`} className="svc-read-btn">Read More</Link>
                                 </div>
                             </div>
                         ))}
@@ -118,8 +133,8 @@ export default function ServicesPage() {
                 <div className="how-works-inner">
                     <div className="how-works-header">
                         <span className="blue-label">WORK PROCESS</span>
-                        <h2>How We Works</h2>
-                        <p>Our team is dedicated to delivering exceptional IT solutions tailored to meet<br />the unique needs of each client.</p>
+                        <h2>How We Work</h2>
+                        <p>Our team is dedicated to delivering professional Web & AI solutions designed to scale<br />your business in the most efficient way possible.</p>
                     </div>
 
                     <div className="steps-row">

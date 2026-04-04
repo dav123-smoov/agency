@@ -1,0 +1,222 @@
+/* c:\Users\david\landing-page\src\components\ServiceDetailPage.css */
+
+.service-detail-page {
+    position: relative;
+    background: #ffffff;
+}
+
+/* ── Hero Section ── */
+.service-hero {
+    position: relative;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.service-hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(14, 21, 58, 0.85), rgba(14, 21, 58, 0.5));
+    z-index: 1;
+}
+
+.service-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 24px;
+}
+
+.service-label-top {
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #38bdf8;
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.service-hero-content h1 {
+    font-size: 4rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 30px;
+    color: #ffffff !important;
+}
+
+.service-quick-stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.stat-pill {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 16px 24px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    min-width: 140px;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.stat-key {
+    font-size: 0.7rem;
+    font-weight: 700;
+    opacity: 0.8;
+}
+
+/* ── Main Content ── */
+.service-main-content {
+    padding: 100px 0;
+    background: #f8fafc;
+}
+
+.service-content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 60px;
+    margin-bottom: 100px;
+}
+
+.service-text-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-text-block.full-width {
+    grid-column: span 2;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+}
+
+.content-label {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+}
+
+.blue-label { color: #3b82f6; }
+.purple-label { color: #8b5cf6; }
+.green-label { color: #10b981; }
+
+.content-heading {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin-bottom: 24px;
+}
+
+.content-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #475569;
+}
+
+/* ── Features List ── */
+.service-features-grid {
+    padding-top: 60px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.features-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.features-header h2 {
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+.features-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+.feature-item-detail {
+    background: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    border-left: 4px solid #3b82f6;
+}
+
+.feature-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3b82f6;
+}
+
+.feature-item-detail span {
+    font-weight: 700;
+    color: #1e293b;
+    font-size: 0.95rem;
+}
+
+/* ── CTA Section ── */
+.service-cta {
+    padding: 100px 24px;
+    background: #ffffff;
+}
+
+.cta-card-detail {
+    background: linear-gradient(135deg, #0e153a 0%, #3b82f6 100%);
+    padding: 80px 40px;
+    border-radius: 32px;
+    text-align: center;
+    color: white;
+}
+
+.cta-card-detail h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #ffffff !important;
+}
+
+.cta-card-detail p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .service-hero-content h1 { font-size: 3rem; }
+    .cta-card-detail h2 { font-size: 2.2rem; }
+    .service-content-grid { grid-template-columns: 1fr; }
+    .service-text-block.full-width { grid-column: span 1; }
+}
+
+@media (max-width: 768px) {
+    .service-hero { height: 400px; }
+    .service-quick-stats { flex-direction: column; align-items: center; }
+    .stat-pill { width: 100%; max-width: 300px; }
+}
