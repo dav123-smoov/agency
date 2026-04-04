@@ -8,7 +8,7 @@
 /* ── Hero Section ── */
 .service-hero {
     position: relative;
-    height: 500px;
+    height: clamp(350px, 60vh, 500px);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -47,18 +47,19 @@
 }
 
 .service-hero-content h1 {
-    font-size: 4rem;
+    font-size: clamp(2.2rem, 8vw, 4rem);
     font-weight: 800;
     line-height: 1.1;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
     color: #ffffff !important;
 }
 
 .service-quick-stats {
     display: flex;
     justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap;
 }
 
 .stat-pill {
@@ -86,15 +87,15 @@
 
 /* ── Main Content ── */
 .service-main-content {
-    padding: 100px 0;
+    padding: clamp(60px, 10vw, 100px) 0;
     background: #f8fafc;
 }
 
 .service-content-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 60px;
-    margin-bottom: 100px;
+    gap: clamp(30px, 5vw, 60px);
+    margin-bottom: clamp(60px, 8vw, 100px);
 }
 
 .service-text-block {
@@ -136,7 +137,7 @@
 
 /* ── Features List ── */
 .service-features-grid {
-    padding-top: 60px;
+    padding-top: clamp(40px, 6vw, 60px);
     border-top: 1px solid #e2e8f0;
 }
 
