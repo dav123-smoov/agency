@@ -124,7 +124,9 @@ export default function LandingPage() {
             <div className="hero-cta-row">
               <Link to="/contact" className="btn-primary">Get Started</Link>
               <span className="hero-hotline">
-                <strong>Hotline: +(733)-860-2906</strong>
+                <a href="tel:+447442507562" style={{ color: 'inherit', textDecoration: 'none' }}>
+                  <strong>Hotline: +44 7442 507562</strong>
+                </a>
               </span>
             </div>
           </div>
