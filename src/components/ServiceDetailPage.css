@@ -8,7 +8,9 @@
 /* ── Hero Section ── */
 .service-hero {
     position: relative;
-    height: clamp(350px, 60vh, 500px);
+    min-height: clamp(400px, 60vh, 500px);
+    height: auto;
+    padding: 130px 0 60px 0;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -217,7 +219,8 @@
 }
 
 @media (max-width: 768px) {
-    .service-hero { height: 400px; }
-    .service-quick-stats { flex-direction: column; align-items: center; }
-    .stat-pill { width: 100%; max-width: 300px; }
+    .service-hero { min-height: 480px; padding-top: 140px; }
+    .service-quick-stats { flex-direction: column; align-items: center; gap: 15px; }
+    .stat-pill { width: 100%; max-width: 300px; padding: 12px 20px; }
+    .service-hero-content h1 { font-size: clamp(2rem, 7vw, 2.5rem); } /* Override tablet 3rem */
 }
