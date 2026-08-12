@@ -358,3 +358,89 @@
         max-width: 100%;
     }
 }
+
+/* ── Contact Page Service Selection Checkboxes ── */
+.services-row {
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-services-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #475569;
+    margin-bottom: 4px;
+}
+
+.contact-services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.contact-checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: 10px 14px;
+    background: #f8fafc;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.contact-checkbox-item:hover {
+    border-color: #4299e1;
+    background: rgba(66, 153, 225, 0.05);
+}
+
+.contact-checkbox-item input[type="checkbox"] {
+    display: none;
+}
+
+.contact-checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #cbd5e1;
+    border-radius: 4px;
+    background: #ffffff;
+    position: relative;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.contact-checkbox-item input[type="checkbox"]:checked + .contact-checkbox-custom {
+    border-color: #4299e1;
+    background: #4299e1;
+}
+
+.contact-checkbox-item input[type="checkbox"]:checked + .contact-checkbox-custom::after {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 1px;
+    width: 5px;
+    height: 9px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.contact-checkbox-text {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #475569;
+}
+
+.contact-checkbox-item input[type="checkbox"]:checked ~ .contact-checkbox-text {
+    color: #0f172a;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+    .contact-services-grid {
+        grid-template-columns: 1fr;
+    }
+}

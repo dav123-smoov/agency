@@ -92,7 +92,7 @@ export default function Footer() {
                             { img: 'https://api.builder.io/api/v1/image/assets/TEMP/6e76bea5071b91488244378e1e6394801b520807?width=80', title: 'Web Industry Key Trends for 2024', date: 'May 17, 2025' },
                         ].map((post, i) => (
                             <div className="footer-post-item" key={i}>
-                                <img src={post.img} alt={post.title} className="footer-post-img" />
+                                <img src={post.img} alt={post.title} className="footer-post-img" loading="lazy" decoding="async" />
                                 <div>
                                     <p className="footer-post-date"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> {post.date}</p>
                                     <a href="#" className="footer-post-latest-title">{post.title}</a>

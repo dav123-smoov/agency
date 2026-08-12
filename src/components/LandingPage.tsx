@@ -391,7 +391,7 @@ export default function LandingPage() {
             {/* Left Column: Image with Floating Name Tag Badge */}
             <div className="founder-photo-col">
               <div className="founder-photo-card">
-                <img src={baDavidImg} alt="B.A. DAVID - Founder & CEO" className="founder-photo-img" />
+                <img src={baDavidImg} alt="B.A. DAVID - Founder & CEO" className="founder-photo-img" loading="lazy" decoding="async" />
                 <div className="founder-name-tag">
                   <div className="tag-avatar-dot"></div>
                   <div className="tag-text-wrap">
@@ -474,7 +474,7 @@ export default function LandingPage() {
               'https://api.builder.io/api/v1/image/assets/TEMP/1a3b2b3566c4e6360ac0541a6150784817f968f0?width=782',
             ].map((src, i) => (
               <div className={`cta-img-card cta-img-card--${i + 1}`} key={i}>
-                <img src={src} alt="Mission" />
+                <img src={src} alt="Mission" loading="lazy" decoding="async" />
               </div>
             ))}
           </div>
@@ -544,7 +544,7 @@ export default function LandingPage() {
             ].map((proj) => (
               <div className="projects-card-item" key={proj.id}>
                 <div className="card-img-wrap">
-                  <img src={proj.heroImg} alt={proj.title} className="card-img" />
+                  <img src={proj.heroImg} alt={proj.title} className="card-img" loading="lazy" decoding="async" />
                   <span className="card-cat-badge">{proj.categoryLabel}</span>
                   <div className="card-img-hover-overlay">
                     <Link to={`/project/${proj.id}`} className="hover-view-btn">
@@ -660,7 +660,7 @@ export default function LandingPage() {
               { img: 'https://api.builder.io/api/v1/image/assets/TEMP/6e4bd2a7d42139dd72ffddc1f0e5052adc5d32fb?width=817', title: 'How Emerging AI Technologies Are Reshaping Business', date: 'January 10, 2024' },
             ].map((post, i) => (
               <div className="blog-card" key={i}>
-                <img src={post.img} alt={post.title} className="blog-card-img" />
+                <img src={post.img} alt={post.title} className="blog-card-img" loading="lazy" decoding="async" />
                 <div className="blog-card-body">
                   <div className="blog-meta">
                     <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg> {post.date}</span>

@@ -110,8 +110,20 @@ export default function ContactPage() {
                             <div className="form-row">
                                 <input type="text" placeholder="Your Subject*" required />
                             </div>
+                            <div className="form-row services-row">
+                                <label className="contact-services-title">Which services do you need? (Select 1 or more)*</label>
+                                <div className="contact-services-grid">
+                                    {['Web Dev & Design', 'AI Automations & Chatbots', 'Digital Marketing & SEO', 'Graphic UI/UX Design'].map(service => (
+                                        <label className="contact-checkbox-item" key={service}>
+                                            <input type="checkbox" />
+                                            <span className="contact-checkbox-custom"></span>
+                                            <span className="contact-checkbox-text">{service}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
                             <div className="form-row">
-                                <textarea placeholder="Write your message*" rows={6} required></textarea>
+                                <textarea placeholder="Write your message*" rows={5} required></textarea>
                             </div>
                             <button type="submit" className="send-message-btn">Send Message</button>
                         </form>

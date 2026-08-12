@@ -151,7 +151,7 @@ export default function FloatingBookingModal() {
                   <div className="form-row-full">
                     <textarea 
                       placeholder="Write your message*" 
-                      rows={5}
+                      rows={2}
                       required
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}

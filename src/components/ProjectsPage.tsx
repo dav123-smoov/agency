@@ -176,7 +176,7 @@ export default function ProjectsPage() {
           {filteredProjects.map((proj) => (
             <div className="projects-card-item" key={proj.id}>
               <div className="card-img-wrap">
-                <img src={proj.heroImg} alt={proj.title} className="card-img" />
+                <img src={proj.heroImg} alt={proj.title} className="card-img" loading="lazy" decoding="async" />
                 <span className="card-cat-badge">{proj.categoryLabel}</span>
                 <div className="card-img-hover-overlay">
                   <Link to={`/project/${proj.id}`} className="hover-view-btn">

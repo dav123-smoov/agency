@@ -84,12 +84,13 @@
   border: 1px solid rgba(186, 230, 253, 0.8);
   border-radius: 20px;
   width: 100%;
-  max-width: 620px;
-  padding: 40px 36px;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px 28px 22px;
   color: #0f172a;
   box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
   animation: modal-scale-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
 }
 
 @keyframes modal-scale-up {
@@ -157,13 +158,13 @@
 .exact-booking-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
 }
 
 .form-row-2col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 10px;
 }
 
 .form-row-full {
@@ -176,9 +177,9 @@
   background: #ffffff;
   border: 1px solid #d1d5db;
   border-radius: 8px;
-  padding: 13px 18px;
+  padding: 10px 14px;
   color: #1e293b;
-  font-size: 0.96rem;
+  font-size: 0.9rem;
   font-family: inherit;
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;

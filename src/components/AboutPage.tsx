@@ -21,7 +21,7 @@ export default function AboutPage() {
                 <div className="agency-layout">
                     {/* Left Main Image Layout */}
                     <div className="agency-images-clean">
-                        <img className="main-agency-img" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80" alt="Team collaborating" />
+                        <img className="main-agency-img" src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80" alt="Team collaborating" loading="lazy" decoding="async" />
 
                         <div className="years-badge-clean">
                             <span className="years-num">100%</span>
@@ -72,9 +72,9 @@ export default function AboutPage() {
 
                         <div className="agency-clients">
                             <div className="client-avatars">
-                                <img src="https://i.pravatar.cc/100?img=11" alt="Client 1" />
-                                <img src="https://i.pravatar.cc/100?img=12" alt="Client 2" />
-                                <img src="https://i.pravatar.cc/100?img=13" alt="Client 3" />
+                                <img src="https://i.pravatar.cc/100?img=11" alt="Client 1" loading="lazy" decoding="async" />
+                                <img src="https://i.pravatar.cc/100?img=12" alt="Client 2" loading="lazy" decoding="async" />
+                                <img src="https://i.pravatar.cc/100?img=13" alt="Client 3" loading="lazy" decoding="async" />
                             </div>
                             <div className="client-stats-text">
                                 <strong>250+</strong>
@@ -125,7 +125,7 @@ export default function AboutPage() {
             {/* 4. Full-width Image and Banner */}
             <section className="about-mid-banner">
                 <div className="mid-banner-img-container">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="Team meeting" />
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80" alt="Team meeting" loading="lazy" decoding="async" />
                 </div>
                 <div className="marquee-ribbon">
                     <div className="marquee-content">
@@ -201,7 +201,7 @@ export default function AboutPage() {
                     <div className="founder-white-grid">
                         <div className="founder-photo-col">
                             <div className="founder-photo-card">
-                                <img src={baDavidImg} alt="B.A. DAVID - Founder & CEO" className="founder-photo-img" />
+                                <img src={baDavidImg} alt="B.A. DAVID - Founder & CEO" className="founder-photo-img" loading="lazy" decoding="async" />
                                 <div className="founder-name-tag">
                                     <div className="tag-avatar-dot"></div>
                                     <div className="tag-text-wrap">
@@ -272,7 +272,7 @@ export default function AboutPage() {
                     <div className="about-team-grid">
                         <div className="about-team-card">
                             <div className="team-card-img-wrap">
-                                <img src={baDavidImg} alt="B.A. DAVID" className="team-card-img" />
+                                <img src={baDavidImg} alt="B.A. DAVID" className="team-card-img" loading="lazy" decoding="async" />
                             </div>
                             <div className="team-card-info">
                                 <h4>B.A. DAVID</h4>
@@ -282,7 +282,7 @@ export default function AboutPage() {
 
                         <div className="about-team-card">
                             <div className="team-card-img-wrap">
-                                <img src={teamLeadImg} alt="J.A. WALTER" className="team-card-img" />
+                                <img src={teamLeadImg} alt="J.A. WALTER" className="team-card-img" loading="lazy" decoding="async" />
                             </div>
                             <div className="team-card-info">
                                 <h4>J.A. WALTER</h4>
@@ -292,7 +292,7 @@ export default function AboutPage() {
 
                         <div className="about-team-card">
                             <div className="team-card-img-wrap">
-                                <img src={quayyumImg} alt="B.M. QUAYYUM" className="team-card-img" />
+                                <img src={quayyumImg} alt="B.M. QUAYYUM" className="team-card-img" loading="lazy" decoding="async" />
                             </div>
                             <div className="team-card-info">
                                 <h4>B.M. QUAYYUM</h4>
