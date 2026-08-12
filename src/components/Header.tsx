@@ -1,9 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+
+  // ── Close mobile menu whenever the route changes ──
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
+
+  const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <>
@@ -44,9 +51,8 @@ export default function Header() {
       <div className="navbar-wrapper">
         <nav className="navbar">
           <div className="navbar-inner">
-            <Link to="/" className="nav-logo">
+            <Link to="/" className="nav-logo" onClick={closeMenu}>
               <div className="nav-logo-icon">
-                {/* Premium DAQS SVG Logo: Hexagon + Speed-D + Data Nodes */}
                 <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <defs>
                     <linearGradient id="daqs-grad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -63,20 +69,26 @@ export default function Header() {
               </div>
               DAQS
             </Link>
+
+            {/* Mobile overlay — clicking outside closes the menu */}
+            {isMobileMenuOpen && (
+              <div className="mobile-menu-overlay" onClick={closeMenu} aria-hidden="true" />
+            )}
+
             <div className={`nav-menu-container ${isMobileMenuOpen ? 'open' : ''}`}>
               <ul className="nav-links">
-                <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
-                <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>About Us</Link></li>
-                <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''}>Services</Link></li>
-                <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projects</Link></li>
-                <li><Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''}>Blog</Link></li>
-                <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
+                <li><Link to="/" className={location.pathname === '/' ? 'active' : ''} onClick={closeMenu}>Home</Link></li>
+                <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''} onClick={closeMenu}>About Us</Link></li>
+                <li><Link to="/services" className={location.pathname === '/services' ? 'active' : ''} onClick={closeMenu}>Services</Link></li>
+                <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''} onClick={closeMenu}>Projects</Link></li>
+                <li><Link to="/blog" className={location.pathname === '/blog' ? 'active' : ''} onClick={closeMenu}>Blog</Link></li>
+                <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''} onClick={closeMenu}>Contact</Link></li>
               </ul>
               <div className="nav-actions">
                 <a href="tel:+2347048043844" className="nav-phone-call-btn" title="Call Us" aria-label="Call Us">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" /></svg>
                 </a>
-                <Link to="/contact" className="btn-primary btn-talk">Let's Talk <span className="plus-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg></span></Link>
+                <Link to="/contact" className="btn-primary btn-talk" onClick={closeMenu}>Let's Talk <span className="plus-icon"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M5 12h14" /></svg></span></Link>
               </div>
               <div className="nav-mobile-socials">
                 <a href="https://www.instagram.com/daqswebagency/" target="_blank" rel="noopener noreferrer" title="Instagram">

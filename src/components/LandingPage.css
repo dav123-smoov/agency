@@ -184,6 +184,21 @@
     padding: 4px;
 }
 
+/* Fullscreen tap-to-close backdrop behind the open mobile menu */
+.mobile-menu-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-overlay {
+        display: block;
+    }
+}
+
 .nav-links {
     display: flex;
     gap: 32px;

@@ -1,6 +1,57 @@
+import { useState } from 'react';
 import './ContactPage.css';
 
+const SERVICES = ['Web Dev & Design', 'AI Automations & Chatbots', 'Digital Marketing & SEO', 'Graphic UI/UX Design'];
+
+// Web3Forms free access key — delivers form submissions directly to info@daqswebagency.com
+// Replace with the key from https://web3forms.com if needed
+const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE';
+
 export default function ContactPage() {
+    const [formData, setFormData] = useState({
+        firstName: '', lastName: '', email: '', phone: '', subject: '', message: ''
+    });
+    const [selectedServices, setSelectedServices] = useState<string[]>([]);
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+    const handleServiceToggle = (service: string) => {
+        setSelectedServices(prev =>
+            prev.includes(service) ? prev.filter(s => s !== service) : [...prev, service]
+        );
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus('sending');
+        try {
+            const payload = {
+                access_key: WEB3FORMS_KEY,
+                subject: `New Enquiry: ${formData.subject} — DAQS Web Agency`,
+                from_name: `${formData.firstName} ${formData.lastName}`,
+                email: formData.email,
+                phone: formData.phone,
+                services_requested: selectedServices.length ? selectedServices.join(', ') : 'None selected',
+                message: formData.message,
+                botcheck: '',
+            };
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+            if (data.success) {
+                setStatus('success');
+                setFormData({ firstName: '', lastName: '', email: '', phone: '', subject: '', message: '' });
+                setSelectedServices([]);
+            } else {
+                setStatus('error');
+            }
+        } catch {
+            setStatus('error');
+        }
+    };
+
     return (
         <div className="contact-page">
             {/* 1. Hero Section */}
@@ -96,42 +147,60 @@ export default function ContactPage() {
                 <div className="section-inner form-flex">
                     <div className="form-content">
                         <span className="section-label">CONTACT US</span>
-                        <h2 className="section-title">Let’s Scale Your SME Together!</h2>
+                        <h2 className="section-title">Let's Scale Your SME Together!</h2>
 
-                        <form className="contact-form">
-                            <div className="form-row">
-                                <input type="text" placeholder="First Name*" required />
-                                <input type="text" placeholder="Last Name*" required />
+                        {status === 'success' ? (
+                            <div className="form-success-banner">
+                                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" />
+                                </svg>
+                                <h3>Message Sent! 🎉</h3>
+                                <p>Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                                <button className="send-message-btn" style={{ marginTop: '16px' }} onClick={() => setStatus('idle')}>Send Another Message</button>
                             </div>
-                            <div className="form-row">
-                                <input type="email" placeholder="Your Mail*" required />
-                                <input type="tel" placeholder="Phone Number*" required />
-                            </div>
-                            <div className="form-row">
-                                <input type="text" placeholder="Your Subject*" required />
-                            </div>
-                            <div className="form-row services-row">
-                                <label className="contact-services-title">Which services do you need? (Select 1 or more)*</label>
-                                <div className="contact-services-grid">
-                                    {['Web Dev & Design', 'AI Automations & Chatbots', 'Digital Marketing & SEO', 'Graphic UI/UX Design'].map(service => (
-                                        <label className="contact-checkbox-item" key={service}>
-                                            <input type="checkbox" />
-                                            <span className="contact-checkbox-custom"></span>
-                                            <span className="contact-checkbox-text">{service}</span>
-                                        </label>
-                                    ))}
+                        ) : (
+                            <form className="contact-form" onSubmit={handleSubmit}>
+                                <div className="form-row">
+                                    <input type="text" placeholder="First Name*" required value={formData.firstName} onChange={e => setFormData({ ...formData, firstName: e.target.value })} />
+                                    <input type="text" placeholder="Last Name*" required value={formData.lastName} onChange={e => setFormData({ ...formData, lastName: e.target.value })} />
                                 </div>
-                            </div>
-                            <div className="form-row">
-                                <textarea placeholder="Write your message*" rows={5} required></textarea>
-                            </div>
-                            <button type="submit" className="send-message-btn">Send Message</button>
-                        </form>
+                                <div className="form-row">
+                                    <input type="email" placeholder="Your Mail*" required value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} />
+                                    <input type="tel" placeholder="Phone Number*" required value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} />
+                                </div>
+                                <div className="form-row">
+                                    <input type="text" placeholder="Your Subject*" required value={formData.subject} onChange={e => setFormData({ ...formData, subject: e.target.value })} />
+                                </div>
+                                <div className="form-row services-row">
+                                    <label className="contact-services-title">Which services do you need? (Select 1 or more)*</label>
+                                    <div className="contact-services-grid">
+                                        {SERVICES.map(service => (
+                                            <label className="contact-checkbox-item" key={service}>
+                                                <input type="checkbox" checked={selectedServices.includes(service)} onChange={() => handleServiceToggle(service)} />
+                                                <span className="contact-checkbox-custom"></span>
+                                                <span className="contact-checkbox-text">{service}</span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="form-row">
+                                    <textarea placeholder="Write your message*" rows={5} required value={formData.message} onChange={e => setFormData({ ...formData, message: e.target.value })}></textarea>
+                                </div>
+                                {status === 'error' && (
+                                    <p className="form-error-msg">⚠️ Something went wrong. Please try again or email us directly.</p>
+                                )}
+                                <button type="submit" className="send-message-btn" disabled={status === 'sending'}>
+                                    {status === 'sending' ? (
+                                        <><span className="btn-spinner"></span> Sending...</>
+                                    ) : 'Send Message'}
+                                </button>
+                            </form>
+                        )}
                     </div>
 
                     <div className="form-image">
                         <div className="man-image-container">
-                            <img src="/man-pointing-laptop.png" alt="Consultant Pointing to Laptop" />
+                            <img src="/man-pointing-laptop.png" alt="Consultant Pointing to Laptop" loading="lazy" decoding="async" />
                         </div>
                     </div>
                 </div>
