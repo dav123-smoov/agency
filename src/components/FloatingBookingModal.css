@@ -1,0 +1,407 @@
+/* ── Floating Booking Modal CSS (Matching Exact Screenshot) ── */
+
+/* Floating Launcher Trigger Button (Bottom-Right) */
+.floating-booking-trigger {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #3b82f6 0%, #38bdf8 100%);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 12px 22px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.45);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.floating-booking-trigger:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 14px 30px rgba(56, 189, 248, 0.55);
+}
+
+.floating-booking-trigger.active {
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+.trigger-pulse {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #25D366;
+  border: 2px solid #ffffff;
+  animation: pulse-ring 2s infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* Modal Overlay & Backdrop */
+.booking-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modal-fade-in 0.3s ease-out;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.booking-modal-container {
+  position: relative;
+  background: linear-gradient(135deg, #e6f4fe 0%, #ffffff 40%, #ffffff 100%);
+  border: 1px solid rgba(186, 230, 253, 0.8);
+  border-radius: 20px;
+  width: 100%;
+  max-width: 620px;
+  padding: 40px 36px;
+  color: #0f172a;
+  box-shadow: 0 25px 60px rgba(15, 23, 42, 0.35);
+  animation: modal-scale-up 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+@keyframes modal-scale-up {
+  from {
+    transform: scale(0.92) translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 22px;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  font-size: 1.5rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  line-height: 1;
+  z-index: 5;
+}
+
+.modal-close-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+.modal-exact-card {
+  text-align: left;
+}
+
+.modal-top-label {
+  display: block;
+  color: #38a169;
+  color: #4299e1;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.modal-exact-heading {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.25;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+/* Exact Form Controls */
+.exact-booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.form-row-full {
+  width: 100%;
+}
+
+.exact-booking-form input,
+.exact-booking-form textarea {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 13px 18px;
+  color: #1e293b;
+  font-size: 0.96rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.exact-booking-form input::placeholder,
+.exact-booking-form textarea::placeholder {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.exact-booking-form textarea::placeholder {
+  font-family: monospace, monospace;
+}
+
+.exact-booking-form input:focus,
+.exact-booking-form textarea:focus {
+  border-color: #4299e1;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+}
+
+.form-action-left {
+  text-align: left;
+  margin-top: 6px;
+}
+
+.btn-send-message {
+  background: #4299e1;
+  color: #ffffff;
+  border: none;
+  padding: 13px 32px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(66, 153, 225, 0.4);
+}
+
+.btn-send-message:hover {
+  background: #3182ce;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(66, 153, 225, 0.5);
+}
+
+/* Success State */
+.modal-success-state {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.success-icon-circle {
+  width: 64px;
+  height: 64px;
+  background: rgba(37, 211, 102, 0.15);
+  border: 2px solid #25D366;
+  color: #25D366;
+  font-size: 2rem;
+  font-weight: 800;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.modal-success-state h3 {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+.modal-success-state p {
+  font-size: 0.98rem;
+  line-height: 1.6;
+  color: #475569;
+  margin-bottom: 28px;
+}
+
+.success-action-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.btn-whatsapp-direct {
+  background: #25D366;
+  color: #ffffff;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 800;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35);
+}
+
+.btn-whatsapp-direct:hover {
+  background: #1eb956;
+  transform: translateY(-2px);
+}
+
+.btn-close-modal {
+  background: transparent;
+  border: 1px solid #cbd5e1;
+  color: #64748b;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-close-modal:hover {
+  color: #0f172a;
+  border-color: #0f172a;
+}
+
+@media (max-width: 600px) {
+  .booking-modal-container {
+    padding: 30px 20px;
+  }
+  .form-row-2col {
+    grid-template-columns: 1fr;
+  }
+  .modal-exact-heading {
+    font-size: 1.5rem;
+  }
+  .floating-booking-trigger {
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 16px;
+    font-size: 0.82rem;
+  }
+}
+
+/* Services Multi-Select Checkbox Styles */
+.services-selection-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 6px 0;
+  text-align: left;
+}
+
+.services-select-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+.services-checkbox-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.checkbox-label-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.checkbox-label-item:hover {
+  border-color: #4299e1;
+  background: rgba(66, 153, 225, 0.04);
+}
+
+.checkbox-label-item input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cbd5e1;
+  border-radius: 4px;
+  background: #ffffff;
+  position: relative;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.checkbox-label-item input[type="checkbox"]:checked + .checkbox-custom {
+  border-color: #4299e1;
+  background: #4299e1;
+}
+
+.checkbox-label-item input[type="checkbox"]:checked + .checkbox-custom::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+.checkbox-label-item input[type="checkbox"]:checked ~ .checkbox-text {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+@media (max-width: 480px) {
+  .services-checkbox-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
