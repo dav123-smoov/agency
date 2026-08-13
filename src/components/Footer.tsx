@@ -1,4 +1,38 @@
+import { useState } from 'react';
+
 export default function Footer() {
+    const [newsletterEmail, setNewsletterEmail] = useState('');
+    const [status, setStatus] = useState<'idle' | 'sending' | 'success'>('idle');
+
+    const handleNewsletterSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!newsletterEmail) return;
+        setStatus('sending');
+        try {
+            const payload = {
+                access_key: 'b84be382-07df-492e-a855-9c38fc9ff4df',
+                subject: 'New Newsletter Subscription — DAQS Web Agency',
+                email: newsletterEmail,
+                message: `New subscriber email: ${newsletterEmail}`,
+            };
+            const res = await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+                body: JSON.stringify(payload),
+            });
+            const data = await res.json();
+            if (data.success) {
+                setStatus('success');
+                setNewsletterEmail('');
+                setTimeout(() => setStatus('idle'), 4000);
+            } else {
+                setStatus('idle');
+            }
+        } catch {
+            setStatus('idle');
+        }
+    };
+
     return (
         <footer className="footer-section">
             {/* Background Mesh Elements */}
@@ -22,9 +56,18 @@ export default function Footer() {
                         <p className="newsletter-subtext">Subscribe to our Newsletter &amp; Event Right Now to be Updated</p>
                     </div>
                 </div>
-                <form className="newsletter-form">
-                    <input type="email" placeholder="Enter Your Email" className="newsletter-input" />
-                    <button type="button" className="newsletter-btn">Subscribe Now</button>
+                <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
+                    <input 
+                        type="email" 
+                        placeholder={status === 'success' ? 'Subscribed Successfully! 🎉' : 'Enter Your Email'} 
+                        className="newsletter-input" 
+                        required 
+                        value={newsletterEmail}
+                        onChange={(e) => setNewsletterEmail(e.target.value)}
+                    />
+                    <button type="submit" className="newsletter-btn" disabled={status === 'sending'}>
+                        {status === 'sending' ? 'Subscribing...' : status === 'success' ? 'Subscribed!' : 'Subscribe Now'}
+                    </button>
                 </form>
             </div>
 
