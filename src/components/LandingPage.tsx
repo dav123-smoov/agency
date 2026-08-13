@@ -139,11 +139,11 @@ export default function LandingPage() {
           <div className="hero-images-container">
             {/* The collage from the image */}
             <div className="hero-img-main">
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/2044da9d5657132d984ad54ae5f30db63872aca3?width=700" alt="Man using laptop" />
+              <img src="https://api.builder.io/api/v1/image/assets/TEMP/2044da9d5657132d984ad54ae5f30db63872aca3?width=700" alt="Man using laptop" fetchPriority="high" decoding="sync" />
             </div>
 
             <div className="hero-img-secondary">
-              <img src="https://api.builder.io/api/v1/image/assets/TEMP/33a45a16eb506518c2cf6eef5a10d6c9d3fb1dc3?width=632" alt="Team discussing" />
+              <img src="https://api.builder.io/api/v1/image/assets/TEMP/33a45a16eb506518c2cf6eef5a10d6c9d3fb1dc3?width=632" alt="Team discussing" fetchPriority="high" decoding="sync" />
             </div>
 
 
@@ -391,7 +391,7 @@ export default function LandingPage() {
             {/* Left Column: Image with Floating Name Tag Badge */}
             <div className="founder-photo-col">
               <div className="founder-photo-card">
-                <img src={baDavidImg} alt="B.A. DAVID - Founder & CEO" className="founder-photo-img" loading="lazy" decoding="async" />
+                <img src={baDavidImg} alt="B.A. DAVID - Founder & CEO" className="founder-photo-img" fetchPriority="high" decoding="async" />
                 <div className="founder-name-tag">
                   <div className="tag-avatar-dot"></div>
                   <div className="tag-text-wrap">

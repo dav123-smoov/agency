@@ -7,13 +7,15 @@
     <title>DAQS Web Agency | Premium Web & AI Solutions</title>
     <meta name="description" content="DAQS Web Agency — We build stunning websites, AI automation systems, and digital marketing solutions for growth-focused SMEs across the UK and Africa." />
 
-    <!-- DNS prefetch & preconnect for external origins -->
+    <!-- DNS prefetch & preconnect -->
     <link rel="dns-prefetch" href="//fonts.googleapis.com" />
     <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//api.builder.io" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://api.builder.io" crossorigin />
 
-    <!-- Google Fonts — non-blocking via media trick -->
+    <!-- Google Fonts — non-blocking -->
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap"
@@ -24,7 +26,7 @@
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;600;700;800&display=swap" />
     </noscript>
 
-    <!-- Theme color for mobile browsers -->
+    <!-- Theme color -->
     <meta name="theme-color" content="#0f172a" />
 
     <!-- Open Graph -->
@@ -32,9 +34,139 @@
     <meta property="og:description" content="Stunning websites, AI automation & digital marketing for SMEs." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://daqswebagency.com" />
+
+    <!-- Full-page preloader styles (inline so they render BEFORE any JS) -->
+    <style>
+      #page-preloader {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #f0f7fd;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        transition: opacity 0.5s ease, visibility 0.5s ease;
+      }
+      #page-preloader.hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .preloader-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        animation: preloader-pulse 1.4s ease-in-out infinite;
+      }
+      .preloader-logo span {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 1.8rem;
+        font-weight: 900;
+        background: linear-gradient(135deg, #3b82f6, #38bdf8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        letter-spacing: -1px;
+      }
+      .preloader-bar-wrap {
+        width: 180px;
+        height: 4px;
+        background: #e2e8f0;
+        border-radius: 4px;
+        overflow: hidden;
+      }
+      .preloader-bar {
+        height: 100%;
+        border-radius: 4px;
+        background: linear-gradient(90deg, #3b82f6, #38bdf8);
+        animation: preloader-slide 1.4s ease-in-out infinite;
+      }
+      @keyframes preloader-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+      @keyframes preloader-slide {
+        0% { width: 0%; margin-left: 0; }
+        50% { width: 80%; margin-left: 0; }
+        100% { width: 0%; margin-left: 100%; }
+      }
+
+      /* Image skeleton shimmer — applied globally */
+      img {
+        background: linear-gradient(90deg, #e2e8f0 25%, #f0f4f8 50%, #e2e8f0 75%);
+        background-size: 200% 100%;
+        animation: img-shimmer 1.5s infinite;
+      }
+      img.loaded, img[src=""] {
+        animation: none;
+        background: transparent;
+      }
+      @keyframes img-shimmer {
+        0% { background-position: 200% 0; }
+        100% { background-position: -200% 0; }
+      }
+    </style>
   </head>
   <body>
+    <!-- Preloader — visible immediately, dismissed by JS once React is ready -->
+    <div id="page-preloader">
+      <div class="preloader-logo">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="pl-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#38bdf8"/>
+              <stop offset="100%" stop-color="#2563eb"/>
+            </linearGradient>
+          </defs>
+          <path d="M16 2L28 8.9V23.1L16 30L4 23.1V8.9L16 2Z" stroke="url(#pl-grad)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.4"/>
+          <path d="M10 10V22M10 10H16C19.3137 10 22 12.6863 22 16C22 19.3137 19.3137 22 16 22H10" stroke="url(#pl-grad)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="16" r="1.5" fill="#38bdf8"/>
+        </svg>
+        <span>DAQS</span>
+      </div>
+      <div class="preloader-bar-wrap">
+        <div class="preloader-bar"></div>
+      </div>
+    </div>
+
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- Dismiss preloader once all images + DOM are interactive -->
+    <script>
+      (function () {
+        function hidePreloader() {
+          var el = document.getElementById('page-preloader');
+          if (el) el.classList.add('hidden');
+        }
+
+        // Mark images as loaded so shimmer stops
+        function markImagesLoaded() {
+          document.querySelectorAll('img').forEach(function(img) {
+            if (img.complete) {
+              img.classList.add('loaded');
+            } else {
+              img.addEventListener('load', function() { img.classList.add('loaded'); });
+              img.addEventListener('error', function() { img.classList.add('loaded'); });
+            }
+          });
+        }
+
+        if (document.readyState === 'complete') {
+          markImagesLoaded();
+          setTimeout(hidePreloader, 400);
+        } else {
+          window.addEventListener('load', function () {
+            markImagesLoaded();
+            setTimeout(hidePreloader, 400);
+          });
+        }
+
+        // Safety net — always remove after 5s max
+        setTimeout(hidePreloader, 5000);
+      })();
+    </script>
   </body>
 </html>

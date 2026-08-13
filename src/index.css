@@ -34,3 +34,21 @@ ul {
   padding: 0;
   margin: 0;
 }
+
+/* ── Global image shimmer skeleton ── */
+@keyframes img-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Stop shimmer once image has loaded */
+img.loaded {
+  animation: none !important;
+  background: transparent !important;
+}
+
+/* Ensure all images never overflow their container */
+img {
+  max-width: 100%;
+  height: auto;
+}
