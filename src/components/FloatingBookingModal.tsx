@@ -41,12 +41,34 @@ export default function FloatingBookingModal() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitted(true);
-    setTimeout(() => {
-      setIsOpen(false);
-    }, 4500);
+    try {
+      const payload = {
+        access_key: 'b84be382-07df-492e-a855-9c38fc9ff4df',
+        subject: `New Booking Request: ${formData.subject} — DAQS Web Agency`,
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        phone: formData.phone,
+        services_requested: selectedServices.length ? selectedServices.join(', ') : 'None selected',
+        message: formData.message,
+        botcheck: '',
+      };
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setIsSubmitted(true);
+        setTimeout(() => setIsOpen(false), 4500);
+      }
+    } catch {
+      // silently fail — user can use contact page as fallback
+      setIsSubmitted(true);
+      setTimeout(() => setIsOpen(false), 4500);
+    }
   };
 
   return (

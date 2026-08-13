@@ -5,7 +5,7 @@ const SERVICES = ['Web Dev & Design', 'AI Automations & Chatbots', 'Digital Mark
 
 // Web3Forms free access key — delivers form submissions directly to info@daqswebagency.com
 // Replace with the key from https://web3forms.com if needed
-const WEB3FORMS_KEY = 'YOUR_ACCESS_KEY_HERE';
+const WEB3FORMS_KEY = 'b84be382-07df-492e-a855-9c38fc9ff4df';
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
